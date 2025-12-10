@@ -10,7 +10,7 @@ export default function ArticleDetail() {
   useEffect(() => {
     async function fetchArticle() {
       try {
-        const res = await fetch(`http://localhost:3000/article/${id}`);
+        const res = await fetch(`http://54.170.63.117:3000/article/${id}`);
         const data = await res.json();
         setArticle(data);
       } catch (error) {
