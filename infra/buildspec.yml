@@ -1,0 +1,30 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - aws --version
+      - $(aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin 984912521638.dkr.ecr.eu-west-1.amazonaws.com)
+
+  build:
+    commands:
+      - echo Building backend image...
+      - docker build -t journal-backend ./backend
+
+      - echo Building frontend image...
+      - docker build -t journal-frontend ./frontend
+
+  post_build:
+    commands:
+      - echo Tagging images...
+      - docker tag journal-backend:latest 984912521638.dkr.ecr.eu-west-1.amazonaws.com/journal-backend:latest
+      - docker tag journal-frontend:latest 984912521638.dkr.ecr.eu-west-1.amazonaws.com/journal-frontend:latest
+
+      - echo Pushing images to ECR...
+      - docker push 984912521638.dkr.ecr.eu-west-1.amazonaws.com/journal-backend:latest
+      - docker push 984912521638.dkr.ecr.eu-west-1.amazonaws.com/journal-frontend:latest
+
+artifacts:
+  files:
+    - '**/*'
