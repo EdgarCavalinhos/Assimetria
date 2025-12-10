@@ -21,6 +21,7 @@ cron.schedule("30 7 * * *", async () => {
 
 app.use("/", articlesRoutes);
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
     console.log(`Server is running on port ${PORT}`);
   });
+  
