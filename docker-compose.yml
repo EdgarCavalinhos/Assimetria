@@ -7,7 +7,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./backend/blog.db:/app/blog.db
+      - ./backend/database.db:/app/database.db
     environment:
       - PORT=3000
       - HF_TOKEN=${HF_TOKEN} 

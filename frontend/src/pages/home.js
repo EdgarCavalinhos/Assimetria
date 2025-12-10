@@ -1,9 +1,11 @@
 import { useArticles } from '../hooks/useArticles';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 function Home() {
     const { articles, loading } = useArticles();
-
+    const navigate = useNavigate();
     if (loading) return <p>Loading...</p>;
 
     if (articles.length === 0) {
@@ -33,7 +35,10 @@ function Home() {
             </section>
 
             <section className="featured-article">
-                <div className="article-card featured-card">
+                <div className="article-card featured-card"
+                style={{ cursor: "pointer" }}
+                onClick={() => navigate(`/articles/${featuredArticle.id}`)}
+                >
                     <p style={{ color: '#D32F2F' }}>{featuredArticle.topic}</p>
                     <h3>{featuredArticle.title}</h3>
                     <p>{featuredArticle.content.substring(0, 550)}...</p>
@@ -52,7 +57,8 @@ function Home() {
                 <h2>Latest Articles</h2>
                 <div className="articles-grid">
                     {otherArticles.map(article => (
-                        <div className="article-card" key={article.id}>
+                        <div className="article-card" key={article.id}
+                        onClick={() => navigate(`/articles/${article.id}`)}>
                             <p style={{ color: '#D32F2F' }}>{article.topic}</p>
                             <h3>{article.title}</h3>
                             <p>{article.content.substring(0, 100)}...</p>
