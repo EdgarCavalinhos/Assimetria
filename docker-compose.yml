@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+ 
+  backend:
+    build: ./backend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend/blog.db:/app/blog.db
+    environment:
+      - PORT=3000
+      - HF_TOKEN=${HF_TOKEN} 
+
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80" 
+    depends_on:
+      - backend

@@ -1,0 +1,226 @@
+/* src/App.css */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap');
+
+/* --- 1. Estrutura e Fundo --- */
+body {
+  margin: 0;
+  background-color: #f9f4f4; 
+  color: #2c2c2c;
+  font-family: 'Lato', sans-serif; 
+}
+
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 140px 20px 100px 20px;
+}
+
+/* --- 2. O Header (Menu) --- */
+.main-header {
+  position: fixed; /* Fixa na janela do navegador */
+  top: 0;
+  left: 0;
+  width: 100%;     /* Ocupa a largura toda */
+  z-index: 1000;   /* Garante que fica POR CIMA de tudo o resto */
+  border-bottom: 1px solid #e0e0e0; /* Linha fininha a separar */
+  background-color: #f9f4f4;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between; /* Afasta o Titulo dos Links */
+  align-items: center;
+}
+
+/* Os Links (Home, Articles...) */
+.main-header nav a {
+  
+  text-decoration: none;
+  color: #555;
+  margin-left: 25px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.main-header nav a:hover {
+  color: #000;
+}
+
+
+/* --- 2. Hero Section (Texto do Topo) --- */
+.hero-section {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.hero-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  color: #1a1a1a;
+  margin: 0 0 10px 0;
+}
+
+.hero-section p {
+  font-size: 1.2rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+
+/* --- 3. O Artigo em Destaque (Featured) --- */
+.featured-article {
+  margin-bottom: 60px;
+}
+
+.featured-card {
+  background-color: white; /* AQUI: Fundo branco para destacar */
+  padding: 40px;
+  border-radius: 8px; /* Cantos arredondados */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06); /* Sombra suave */
+  border-left: 5px solid #1a1a1a; /* Detalhe elegante à esquerda */
+}
+
+.featured-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  margin-top: 0;
+  color: #1a1a1a;
+}
+
+/* --- 4. Secção "Latest Articles" --- */
+.other-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #1a1a1a;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 10px;
+}
+
+/* --- 5. A Grelha de 3 Colunas --- */
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Divide em 3 colunas iguais */
+  gap: 30px; /* Espaço entre os cartões */
+}
+
+/* --- 6. Os Cartões Pequenos --- */
+.article-card {
+  background-color: white; /* AQUI: Fundo branco nos cartões da grelha */
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  transition: transform 0.2s; /* Animação suave */
+  border: 1px solid #eee;
+}
+
+.article-card:hover {
+  transform: translateY(-5px); /* Levanta ao passar o rato */
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.article-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  margin-top: 0;
+  color: #1a1a1a;
+  line-height: 1.3;
+}
+
+.article-card p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.article-card small {
+  display: block;
+  margin-top: 15px;
+  color: #999;
+  font-weight: bold;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* --- 7. Responsivo (Telemóvel) --- */
+@media (max-width: 768px) {
+  .articles-grid {
+    grid-template-columns: 1fr; /* Passa para 1 coluna no telemóvel */
+  }
+  
+  .hero-section h2 {
+    font-size: 2.5rem;
+  }
+}
+
+
+/* --- PÁGINA: ARTICLES FEED (Estilo Fórum) --- */
+
+.articles-feed {
+  max-width: 800px; /* Largura ideal para leitura longa */
+  margin: 0 auto;   /* Centrado */
+}
+
+.feed-item {
+  margin-bottom: 80px; /* Muito espaço entre cada artigo */
+  background-color: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.02); /* Sombra muito leve */
+  border: 1px solid #eee;
+}
+
+.feed-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.topic-badge {
+  color: #D32F2F;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.date {
+  color: #999;
+  font-size: 0.85rem;
+}
+
+.feed-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  color: #1a1a1a;
+  margin-top: 0;
+  margin-bottom: 25px;
+}
+
+.feed-content {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.8; /* Espaçamento entre linhas para ser fácil de ler */
+  color: #333;
+  white-space: pre-wrap; /* IMPORTANTE: Mantém os parágrafos que vêm da BD */
+}
+
+.feed-footer {
+  margin-top: 30px;
+  padding-top: 20px;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* A linha que separa um artigo do outro */
+.feed-divider {
+  margin-top: 40px;
+  border: 0;
+  border-top: 4px solid #F9F8F4; /* Cor do fundo da página */
+}
